@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silent Mod Welcome</title>
+    <!-- Tailwind CSS লোড করা হচ্ছে -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* ফন্ট ইমপোর্ট */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: transparent; 
+        }
+    </style>
+</head>
+<body class="m-0 p-0 flex justify-center items-center h-screen select-none">
+
+    <!-- মূল ডায়ালগ কার্ড -->
+    <div class="bg-[#0A0909] w-[90%] max-w-[340px] rounded-[16px] p-[10px] flex flex-col gap-[16px] shadow-2xl">
+        
+        <!-- টপ সেকশন: আইকন এবং টাইটেল -->
+        <div class="flex items-center justify-center border border-[#DDDDDD] rounded-[16px] p-[8px] bg-[#0A0909]">
+            <!-- অ্যাভাটার (এখানে তোমার ডিরেক্ট লিংক বসানো হয়েছে) -->
+            <img id="avatarImg" src="https://silent.unaux.com/ME/avatar.jpg" alt="avatar" 
+                 class="w-[60px] h-[60px] rounded-full border-[2px] border-[#DDDDDD] object-cover ml-[6px]">
+            
+            <!-- ভার্টিকাল লাইন (সেপারেটর) -->
+            <div class="w-[1px] h-[45px] bg-[#DDDDDD] mx-[12px]"></div>
+            
+            <!-- টাইটেল টেক্সট -->
+            <div class="flex flex-col items-center mr-[6px]">
+                <div class="border border-[#DDDDDD] rounded-[16px] px-[12px] py-[4px] bg-[#16000000]">
+                    <span class="text-[#ffffff] font-bold text-[18px] tracking-wide">SILENT MOD</span>
+                </div>
+                <span class="text-[#ebebeb] text-[13px] mt-[4px] italic font-light">Modder,Web Developer</span>
+            </div>
+        </div>
+
+        <!-- মিডল সেকশন: মেসেজ বক্স -->
+        <div class="border border-[#DDDDDD] rounded-[16px] p-[14px] bg-[#0A0909] text-center">
+            <p class="text-[#fefefe] text-[15px] font-medium leading-relaxed m-0">
+                Join our Telegram channel to access more modded apps and exclusive updates.
+            </p>
+        </div>
+
+        <!-- "Don't Show Again" সুইচ -->
+        <label class="flex items-center cursor-pointer bg-[#34000000] py-[8px] px-[12px] rounded-full mx-[4px]">
+            <div class="relative">
+                <input type="checkbox" id="dontShowAgain" class="sr-only" onchange="handleToggle(this)">
+                <!-- সুইচের ব্যাকগ্রাউন্ড -->
+                <div class="block bg-[#cccccc] w-[40px] h-[22px] rounded-full transition-colors duration-300" id="toggleBg"></div>
+                <!-- সুইচের ডট -->
+                <div class="dot absolute left-[2px] top-[2px] bg-white w-[18px] h-[18px] rounded-full transition-transform duration-300" id="toggleDot"></div>
+            </div>
+            <div class="ml-[12px] text-[#dce4f0] text-[14px] font-medium">
+                Don't Show Again
+            </div>
+        </label>
+
+        <!-- বটম সেকশন: বাটনস -->
+        <div class="flex justify-between items-center px-[20px] pb-[8px] pt-[4px]">
+            <button onclick="closeDialog()" class="text-[#ffffff] font-bold text-[15px] uppercase tracking-wider px-[16px] py-[8px] active:scale-90 transition-transform bg-transparent border-none outline-none">
+                CANCEL
+            </button>
+            <button onclick="joinTelegram()" class="text-[#ffffff] font-bold text-[15px] uppercase tracking-wider px-[16px] py-[8px] active:scale-90 transition-transform bg-transparent border-none outline-none">
+                JOIN
+            </button>
+        </div>
+
+    </div>
+
+    <!-- লজিক স্ক্রিপ্ট -->
+    <script>
+        // "Don't Show Again" সুইচের লজিক
+        function handleToggle(el) {
+            const bg = document.getElementById('toggleBg');
+            const dot = document.getElementById('toggleDot');
+            
+            if(el.checked) {
+                bg.classList.replace('bg-[#cccccc]', 'bg-[#ffffff]');
+                dot.classList.replace('bg-white', 'bg-[#0A0909]');
+                dot.classList.add('translate-x-[18px]');
+                
+                if(window.Android) {
+                    Android.disableWelcomeDialog();
+                }
+            } else {
+                bg.classList.replace('bg-[#ffffff]', 'bg-[#cccccc]');
+                dot.classList.replace('bg-[#0A0909]', 'bg-white');
+                dot.classList.remove('translate-x-[18px]');
+            }
+        }
+
+        // ক্যান্সেল বাটন লজিক
+        function closeDialog() {
+            if(window.Android) {
+                Android.closeDialog();
+            }
+        }
+
+        // জয়েন বাটন লজিক
+        function joinTelegram() {
+            if(window.Android) {
+                Android.openLink('https://t.me/SILENT_MOD_SG');
+            }
+            setTimeout(closeDialog, 500); 
+        }
+    </script>
+</body>
+</html>
