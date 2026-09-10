@@ -1,6 +1,0 @@
-{
-    "version": "2.5.8",
-    "title": "Additional Resources Required",
-    "description": "This app needs to download its encrypted resources to work properly.",
-    "data_file_url": "https://raw.githubusercontent.com/sampadghosal/apps/main/libseekho.so"
-}
