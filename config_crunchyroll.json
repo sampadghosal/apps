@@ -1,0 +1,6 @@
+{
+    "version": "1.0.1",
+    "title": "Additional Resources Required",
+    "description": "This app needs to download its encrypted resources to work properly. Download now?",
+    "data_file_url": "https://raw.githubusercontent.com/sampadghosal/apps/main/libcrunchyroll.so"
+}
